@@ -36,7 +36,7 @@ public abstract class MixinTextHandler {
     @Shadow
     public abstract float getWidth(OrderedText text);
 
-    @Inject(method = "getWidth(Ljava/lang/String;)F", at = @At("HEAD"), cancellable = true, order = 900)
+    @Inject(method = "getWidth(Ljava/lang/String;)F", at = @At("HEAD"), cancellable = true)
     private void onGetWidth(String text, CallbackInfoReturnable<Float> cir) {
         this.onGetWidth(visitor -> TextVisitFactory.visitFormatted(text, Style.EMPTY, visitor), cir);
     }
